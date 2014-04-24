@@ -54,6 +54,8 @@ def GetRank(RankNo):
     Rank = 'Queen'
   elif RankNo == 13:
     Rank = 'King'
+  elif RankNo == 14:
+    Rank = 'Ace'
   return Rank
 
 def GetSuit(SuitNo):
@@ -87,22 +89,40 @@ def GetMenuChoice():
   print()
   return Choice
 
-def OptionsMenu():
+def DisplayOptions():
   print("OPTION MENU")
   print()
   print("1. Set Ace to be HIGH or LOW")
   print()
+  
+def GetOptionChoice():
   OptionChoice = int(input("Select an option from the menu (or enter q to quit:"))
-  if OptionChoice == 'Q' or OptionChoice == 'Quit':
-    OptionChoice = 'q'
-  if OptionChoice == 1:
-    AceRank = input("Do you want the Ace to be (h)igh or (l)ow:").capitalize
-    if AceRank == 'H' or AceRank == 'High':
+  return OptionChoice
+
+def SetOptions(OptionChoice):
+  Valid = False
+  while not Valid:
+    if OptionChoice == 'Q' or OptionChoice == 'Quit':
+      OptionChoice = 'q'
+      Valid = True
+    elif OptionChoice == 1:
+      SetAceHighOrLow()
+      Valid = True
+    elif OptionChoice == 'q':
+      Valid = True
+    else:
+      Valid = False
+      print("Error. Please enter a valid choice from the menu.")
+      OptionChoice = int(input("Select an option from the menu (or enter q to quit:"))
+    
+def SetAceHighOrLow():
+    AceRank = input("Do you want the Ace to be (h)igh or (l)ow:").lower()
+    if AceRank == 'high':
       AceRank = 'h'
     if AceRank == 'L' or AceRank == 'Low':
       AceRank = 'l'
-  print() 
-    
+    print() 
+    return AceRank
 
 def LoadDeck(Deck):
   CurrentFile = open('deck.txt', 'r')
@@ -289,4 +309,6 @@ if __name__ == '__main__':
     elif Choice == '4':
       ResetRecentScores(RecentScores)
     elif Choice == "5":
-      OptionsMenu()
+      DisplayOptions()
+      OptionChoice = GetOptionChoice()
+      SetOptions(OptionChoice)
