@@ -33,6 +33,19 @@
 Fixed Value - A variable obtained with out any calculation and doesn't change.
 Stepper - A variable used to keep a count of the number of repetitions.
 Most recent holder - A variable used to store the latest of a series of values.
-Most wanted holder - Stores the most appropriate value encountered.
+Most wanted holder - Stores the most appropriate value encountered. e.g. storing the largest value calculated so far.
 Gatherer - A variable accumulating the effect of individual values. e.g. calculating a series of values we keep a running total.
-Transformation - 
+Transformation - A variable that gets it's new value from the calculation from another calculation of variables. e.g. conversions.
+Follower - A variable that's value is obtained from another variable's OLD value acting like a copy.
+Temporary - A variable used for holding a value for a short time. This could be used when swapping values of variables.
+
+Examples of each:
+
+Fixed Value: NO_OF_RECENT_SCORES
+Stepper: Count
+Most recent holder:  Choice
+Most wanted holder: Score
+Gatherer: Score
+Transformation: Score
+Follower:
+Temporary: Count 
