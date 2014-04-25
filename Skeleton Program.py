@@ -80,27 +80,17 @@ def DisplayMenu():
   print('4. Reset recent scores')
   print("5. Options.")
   print()
-
+  print('Select an option from the menu (or enter q to quit): ', end='')
 
 def GetMenuChoice():
   Valid = False
   while not Valid:
-    Choice = int(input("Select an option from the menu (or enter q to quit):"))
-    if Choice == 1:
-      Valid = True
-    elif Choice == 2:
-      Valid = True
-    elif Choice == 3:
-      Valid = True
-    elif Choice == 4:
-      Valid = True
-    elif Choice == 5:
-      Valid = True
-    elif Choice == 'quit':
-      Choice = 'q'
+    Choice = input().lower()
+    Choice = Choice[0]
+    if Choice in ['1','2','3','4','5','q']:
       Valid = True
     else:
-      print("Error. Please enter in a valid option from the menu.")
+      print("Please enter a valid option.")
       Valid = False
   return Choice
 
