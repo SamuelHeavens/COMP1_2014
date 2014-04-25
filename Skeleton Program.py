@@ -80,13 +80,28 @@ def DisplayMenu():
   print('4. Reset recent scores')
   print("5. Options.")
   print()
-  print('Select an option from the menu (or enter q to quit): ', end='')
+
 
 def GetMenuChoice():
-  Choice = input().capitalize()
-  if Choice == 'Q' or Choice == 'Quit':
-    Choice = 'q'
-  print()
+  Valid = False
+  while not Valid:
+    Choice = int(input("Select an option from the menu (or enter q to quit):"))
+    if Choice == 1:
+      Valid = True
+    elif Choice == 2:
+      Valid = True
+    elif Choice == 3:
+      Valid = True
+    elif Choice == 4:
+      Valid = True
+    elif Choice == 5:
+      Valid = True
+    elif Choice == 'quit':
+      Choice = 'q'
+      Valid = True
+    else:
+      print("Error. Please enter in a valid option from the menu.")
+      Valid = False
   return Choice
 
 def DisplayOptions():
@@ -102,7 +117,7 @@ def GetOptionChoice():
 def SetOptions(OptionChoice):
   Valid = False
   while not Valid:
-    if OptionChoice == 'Q' or OptionChoice == 'Quit':
+    if OptionChoice == 'quit':
       OptionChoice = 'q'
       Valid = True
     elif OptionChoice == 1:
@@ -113,8 +128,8 @@ def SetOptions(OptionChoice):
     else:
       Valid = False
       print("Error. Please enter a valid choice from the menu.")
-      OptionChoice = int(input("Select an option from the menu (or enter q to quit:"))
-    
+      OptionChoice = int(input("Select an option from the menu (or enter q to quit):"))
+      
 def SetAceHighOrLow():
     AceRank = input("Do you want the Ace to be (h)igh or (l)ow:").lower()
     if AceRank == 'high':
@@ -294,7 +309,7 @@ if __name__ == '__main__':
   for Count in range(1, NO_OF_RECENT_SCORES + 1):
     RecentScores.append(TRecentScore())
   Choice = ''
-  while Choice != 'q':
+  while Choice != 'q' or Choice != 'quit' :
     DisplayMenu()
     Choice = GetMenuChoice()
     if Choice == '1':
@@ -312,3 +327,5 @@ if __name__ == '__main__':
       DisplayOptions()
       OptionChoice = GetOptionChoice()
       SetOptions(OptionChoice)
+
+
