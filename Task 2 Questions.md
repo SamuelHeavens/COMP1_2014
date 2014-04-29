@@ -19,34 +19,66 @@
 	FUNCTION SetOptions(OptionChoice:String/Integer)
 		Valid : Boolean
 		ARRAY ['q']: String [1]
-		Valid <- False
+		Valid <- FALSE
 		WHILE NOT Valid THEN
 			IF OptionChoice in ['q'] THEN
-				Valid <- True
+				Valid <- TRUE
+				END IF
 			ELIF OptionChoice == 1 THEN
 				SetAceHighOrLow()
-				Valid <- True
+				Valid <- TRUE
+				END ELIF
 			ELSE THEN
-				Valid <- False
+				Valid <- FALSE
 				OUTPUT "Error. Please enter a valid choice from the menu."
 				OptionChoice <- INT(INPUT("Select an option from the menu (or enter q to quit)"))
-			
+				END ELSE
+		END WHILE
+		
 	FUNCTION SetAceHighOrLow()
 		global AceRank
 		AceRank: Boolean
 		HighOrLow <- INPUT ("Do you want the Ace to be (h)igh or (l)ow:").lower()
 		HighOrLow <- HighOrLow[0]
 		Valid : Boolean
-		Valid <- False
+		Valid <- FALSE
 		WHILE NOT Valid THEN
 			IF HighOrLow == 'h' THEN
-				AceRank <- True
-				Valid <- True
+				AceRank <- TRUE
+				Valid <- TRUE
+				END IF
 			ELIF HighOrLow == 'l' THEN
-				AceRank <- False
-				Valid <- True
+				AceRank <- FALSE
+				Valid <- TRUE
+				END ELIF
 			ELSE THEN
 				OUTPUT "Invalid Input. Try again."
 				HighOrLow <- INPUT ("Do you want the Ace to be (h)igh or (l)ow:").lower()
+				END ELSE
 			OUTPUT AceRank
+		END WHILE
 
+##Task 7 - Pseudo-code
+
+	FUNCTION BubbleSortScores(RecentScores:String)
+		swapped : Boolean
+		swapped <- TRUE
+		list_length <- len(RecentScores)
+		WHILE swapped THEN
+			list_length <- list_length -1
+			swapped <- FALSE
+			OUTPUT (RecentScores[1].Score)
+			FOR Count IN range(1,list_length) THEN
+				IF RecentScore[count].Score < RecentScores[count+1].Score THEN
+					tempScore <- RecentScore[count].Score
+					tempDate <- RecentScores[count].Data
+					tempName <- RecentScores[count].Name
+					RecentScore[count].Score <- recentScores[count+1].Score
+					RecentScore[count].Date <- RecentScore [count+1].Date
+					RecentScore[count].Name <- RecentScores[count+1].Name
+					RecentScores[count+1].Score <- tempScore
+					RecentScores[count+1].Date <- tempDate
+					RecentScores[count+1].Name <- tempName
+					swapped <- TRUE
+					END IF
+		END WHILE
