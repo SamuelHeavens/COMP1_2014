@@ -34,38 +34,37 @@ Fixed Value - A variable obtained with out any calculation and doesn't change.
 Stepper - A variable used to keep a count of the number of repetitions.
 Most recent holder - A variable used to store the latest of a series of values.
 Most wanted holder - Stores the most appropriate value encountered. e.g. storing the largest value calculated so far.
-Gatherer - A variable accumulating the effect of individual values. e.g. calculating a series of values we keep a running total.
+Gatherer - Keeps a total of a series of values.
 Transformation - A variable that gets it's new value from the calculation from another calculation of variables. e.g. conversions.
-Follower - A variable that's value is obtained from another variable's OLD value acting like a copy.
+Follower - Keeps track of a previous value of a variable.
 Temporary - A variable used for holding a value for a short time. This could be used when swapping values of variables.
 
 Examples of each:
 
-Fixed Value: NO_OF_RECENT_SCORES
-Stepper: Count
-Most recent holder:  Choice
-Most wanted holder: Score
-Gatherer: Score
-Transformation: Score
-Follower:
-Temporary: Count 
+Fixed Value: NoOfSwaps line 98
+Stepper: Count line 94
+Most recent holder:  Choice 197
+Most wanted holder: LineFromFile line 87, LastCard line 187
+Gatherer: - (None in program) 
+Transformation: Higher line 124, FoundSpace 171
+Follower: LastCard line 187
+Temporary: Swap space line 97
 
 ##Additional Task - Functions And Parameters
 
 1. Describe the difference between passing by value and passing by reference in your own words:
 
-   Only lists and records are passed by value, all other data types are passed by reference. When you pass by value, a copy of the 
-   data is passed into the function so you are not working on the original data, this is why we must return the variable at the end
-   of a function so that we can update the original. When we pass by reference, you are working on the original data, when you change
-   the data within a function you are changing the original so there is no need to return the variable at the end of a function.
+   When you pass by value, a copy of the data is passed into the function so you are not working on the original data.
+   When we pass by reference, you are working on the original data.
 
 2. For each function in the program identify the mechanism using to pass each parameter:
 
-   GetRank Function - RankNo is passed by value
-   GetSuit Function - SuitNo is passed by value
+   GetRank Function - RankNo is passed via value
+   GetSuit Function - SuitNo is passed via value
+   DisplayEndOfgameMessage - Score is passed via value
    LoadDeck Function - Deck is passed by reference
    ShuffleDeck Function - Deck is passed by reference
-   DisplayCard Function - ThisCard is passed by reference
+   DisplayCard Function - ThisCard is passed by reference - record
    GetCard Function - ThisCard, Deck and NoOfCardsTurnedOver are all passed by reference 
    IsNextCardHigher Function - LastCard and NextCard both passed by value
    DisplayEndOfGameMessage Function - Score is passed by reference
