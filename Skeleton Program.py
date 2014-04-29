@@ -8,8 +8,9 @@
 
 import random
 import datetime
+import pickle
 
-NO_OF_RECENT_SCORES = 3
+NO_OF_RECENT_SCORES = 10
 
 class TCard():
   def __init__(self):
@@ -25,6 +26,7 @@ class TRecentScore():
 Deck = [None]
 RecentScores = [None]
 Choice = ''
+AceRank = False
 
 def GetRank(RankNo):
   Rank = ''
@@ -78,7 +80,9 @@ def DisplayMenu():
   print('2. Play game (without shuffle)')
   print('3. Display recent scores')
   print('4. Reset recent scores')
-  print("5. Options.")
+  print("5. Options")
+  print("6. Save high scores")
+  print("7. Load high scores")
   print()
   print('Select an option from the menu (or enter q to quit): ', end='')
 
@@ -87,7 +91,7 @@ def GetMenuChoice():
   while not Valid:
     Choice = input().lower()
     Choice = Choice[0]
-    if Choice in ['1','2','3','4','5','q']:
+    if Choice in ['1','2','3','4','5','6','7','q']:
       Valid = True
     else:
       print("Please enter a valid option.")
@@ -101,19 +105,16 @@ def DisplayOptions():
   print()
   
 def GetOptionChoice():
-  OptionChoice = int(input("Select an option from the menu (or enter q to quit:"))
+  OptionChoice = int(input("Select an option from the menu (or enter q to quit):"))
   return OptionChoice
 
 def SetOptions(OptionChoice):
   Valid = False
   while not Valid:
-    if OptionChoice == 'quit':
-      OptionChoice = 'q'
+    if OptionChoice in ['q']:
       Valid = True
     elif OptionChoice == 1:
       SetAceHighOrLow()
-      Valid = True
-    elif OptionChoice == 'q':
       Valid = True
     else:
       Valid = False
@@ -121,15 +122,24 @@ def SetOptions(OptionChoice):
       OptionChoice = int(input("Select an option from the menu (or enter q to quit):"))
       
 def SetAceHighOrLow():
-    AceRank = input("Do you want the Ace to be (h)igh or (l)ow:").lower()
-    if AceRank == 'high':
-      AceRank = 'h'
-    if AceRank == 'L' or AceRank == 'Low':
-      AceRank = 'l'
-    print() 
-    return AceRank
+    global AceRank
+    HighOrLow = input("Do you want the Ace to be (h)igh or (l)ow:").lower()
+    HighOrLow = HighOrLow[0]
+    Valid = False
+    while not Valid:
+      if HighOrLow == 'h':
+        AceRank = True
+        Valid = True
+      elif HighOrLow == 'l':
+        AceRank = False
+        Valid = True
+      else:
+        print("Invalid Input. Try again.")
+        HighOrLow = input(" Do you want the Ace to be (h)igh or (l)ow:").lower()
+      print(AceRank)
 
 def LoadDeck(Deck):
+  global AceRank
   CurrentFile = open('deck.txt', 'r')
   Count = 1
   while True:
@@ -140,6 +150,8 @@ def LoadDeck(Deck):
     Deck[Count].Suit = int(LineFromFile)
     LineFromFile = CurrentFile.readline()
     Deck[Count].Rank = int(LineFromFile)
+    if AceRank == True and Deck[Count].Rank == 1:
+      Deck[Count].Rank = 14
     Count = Count + 1
  
 def ShuffleDeck(Deck):
@@ -264,7 +276,16 @@ def UpdateRecentScores(RecentScores, Score):
     else:
       print("Error. Please enter in a valid choice.")  
       ValidResponse = True
-      
+
+def SaveScores(RecentScores):
+  with open("save_scores.txt.", mode="wb") as my_file:
+    pickle.dump(RecentScores, my_file)
+
+def LoadScores():
+  with open("save_scores.txt.", mode="rb") as my_file:
+      RecentScores = pickle.load(my_file)      
+  return RecentScores
+
 def PlayGame(Deck, RecentScores):
   LastCard = TCard()
   NextCard = TCard()
@@ -293,6 +314,27 @@ def PlayGame(Deck, RecentScores):
     DisplayEndOfGameMessage(51)
     UpdateRecentScores(RecentScores, 51)
 
+def BubbleSortScores(RecentScores):
+    swapped = True
+    list_length = len(RecentScores)
+    while swapped:
+        list_length = list_length - 1
+        swapped = False
+        print(RecentScores[1].Score)
+        for count in range(1,list_length):
+            if RecentScores[count].Score < RecentScores[count+1].Score:
+                tempScore = RecentScores[count].Score
+                tempDate = RecentScores[count].Date
+                tempName = RecentScores[count].Name
+                RecentScores[count].Score = RecentScores[count+1].Score
+                RecentScores[count].Date = RecentScores[count+1].Date
+                RecentScores[count].Name = RecentScores[count+1].Name
+                RecentScores[count+1].Score = tempScore
+                RecentScores[count+1].Date = tempDate
+                RecentScores[count+1].Name = tempName                
+                swapped = True
+    return RecentScores
+  
 if __name__ == '__main__':
   for Count in range(1, 53):
     Deck.append(TCard())
@@ -310,6 +352,7 @@ if __name__ == '__main__':
       LoadDeck(Deck)
       PlayGame(Deck, RecentScores)
     elif Choice == '3':
+      RecentScores = BubbleSortScores(RecentScores)
       DisplayRecentScores(RecentScores)
     elif Choice == '4':
       ResetRecentScores(RecentScores)
@@ -317,5 +360,14 @@ if __name__ == '__main__':
       DisplayOptions()
       OptionChoice = GetOptionChoice()
       SetOptions(OptionChoice)
+    elif Choice == '6':
+      SaveScores(RecentScores)
+    elif Choice == '7':
+      try:
+        RecentScores = LoadScores()
+      except FileNotFoundError:
+        SaveScores(RecentScores)
+        print("File not found.")
+      
 
 
