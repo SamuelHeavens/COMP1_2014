@@ -58,6 +58,11 @@
 			OUTPUT AceRank
 		END WHILE
 
+##Test Table:
+
+|TestNumber|Test Description|Test Data|Type|Expected Result|Actual Result|
+|----------|----------------|---------|----|---------------|-------------|
+|1| |quit|normal|The user enters 'quit' or 'q' to end the game.|
 ##Task 7 - Pseudo-code
 
 	FUNCTION BubbleSortScores(RecentScores:String)
