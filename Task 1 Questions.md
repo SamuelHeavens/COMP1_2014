@@ -25,37 +25,37 @@
 1.	Import datetime
 2.	DisplayRecentScores, UpdateRecentScores and TRecentScore
 3.	By using the following code:
-  today = datetime.date.today()
-  Date = today.strftime('%d-%m-%y')
+		today = datetime.date.today()
+		Date = today.strftime('%d-%m-%y')
 
 ##Additional Task - Variable roles
 
-1. Fixed Value - A variable obtained with out any calculation and doesn't change.
-2. Stepper - A variable used to keep a count of the number of repetitions.
-3. Most recent holder - A variable used to store the latest of a series of values.
-4. Most wanted holder - Stores the most appropriate value encountered. e.g. storing the largest value calculated so far.
-5. Gatherer - Keeps a total of a series of values.
-6. Transformation - A variable that gets it's new value from the calculation from another calculation of variables. e.g. conversions.
-7. Follower - Keeps track of a previous value of a variable.
-8. Temporary - A variable used for holding a value for a short time. This could be used when swapping values of variables.
+		Fixed Value - A variable obtained with out any calculation and doesn't change.
+		Stepper - A variable used to keep a count of the number of repetitions.
+		Most recent holder - A variable used to store the latest of a series of values.
+		Most wanted holder - Stores the most appropriate value encountered. e.g. storing the largest value calculated so far.
+		Gatherer - Keeps a total of a series of values.
+		Transformation - A variable that gets it's new value from the calculation from another calculation of variables. e.g. conversions.
+		Follower - Keeps track of a previous value of a variable.
+		Temporary - A variable used for holding a value for a short time. This could be used when swapping values of variables.
 
 Examples of each:
 
-1. Fixed Value: NoOfSwaps line 98
-2. Stepper: Count line 94
-3. Most recent holder:  Choice 197
-4. Most wanted holder: LineFromFile line 87, LastCard line 187
-5. Gatherer: - (None in program) 
-6. Transformation: Higher line 124, FoundSpace 171
-7. Follower: LastCard line 187
-8. Temporary: Swap space line 97
+		Fixed Value: NoOfSwaps line 98
+		Stepper: Count line 94
+		Most recent holder:  Choice 197
+		Most wanted holder: LineFromFile line 87, LastCard line 187
+		Gatherer: - (None in program) 
+		Transformation: Higher line 124, FoundSpace 171
+		Follower: LastCard line 187
+		Temporary: Swap space line 97
 
 ##Additional Task - Functions And Parameters
 
 1. Describe the difference between passing by value and passing by reference in your own words:
 
-   When you pass by value, a copy of the data is passed into the function so you are not working on the original data.
-   When we pass by reference, you are working on the original data.
+		When you pass by value, a copy of the data is passed into the function so you are not working on the original data.
+		When we pass by reference, you are working on the original data.
 
 2. For each function in the program identify the mechanism using to pass each parameter:
 
