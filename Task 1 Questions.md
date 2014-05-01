@@ -59,17 +59,17 @@ Examples of each:
 
 2. For each function in the program identify the mechanism using to pass each parameter:
 
-	GetRank Function - RankNo is passed via value
-	GetSuit Function - SuitNo is passed via value
-	DisplayEndOfgameMessage - Score is passed via value
-	LoadDeck Function - Deck is passed by reference
-	ShuffleDeck Function - Deck is passed by reference
-	DisplayCard Function - ThisCard is passed by reference - record
-	GetCard Function - ThisCard, Deck and NoOfCardsTurnedOver are all passed by reference 
-	IsNextCardHigher Function - LastCard and NextCard both passed by value
-	DisplayEndOfGameMessage Function - Score is passed by reference
-	DisplayCorrectGuessMessage Function - Score is passed by reference
-	ResetRecentScores Function - RecentScores is passed by reference
-	DisplayRecentScores Function - RecentScores is passed by reference
-	UpdateRecentScores Function - RecentScores and Score are both passed by reference
-	PlayGame Function - Deck and RecentScores are bother passed by reference
+		GetRank Function - RankNo is passed via value
+		GetSuit Function - SuitNo is passed via value
+		DisplayEndOfgameMessage - Score is passed via value
+		LoadDeck Function - Deck is passed by reference
+		ShuffleDeck Function - Deck is passed by reference
+		DisplayCard Function - ThisCard is passed by reference - record
+		GetCard Function - ThisCard, Deck and NoOfCardsTurnedOver are all passed by reference 
+		IsNextCardHigher Function - LastCard and NextCard both passed by value
+		DisplayEndOfGameMessage Function - Score is passed by reference
+		DisplayCorrectGuessMessage Function - Score is passed by reference
+		ResetRecentScores Function - RecentScores is passed by reference
+		DisplayRecentScores Function - RecentScores is passed by reference
+		UpdateRecentScores Function - RecentScores and Score are both passed by reference
+		PlayGame Function - Deck and RecentScores are bother passed by reference
