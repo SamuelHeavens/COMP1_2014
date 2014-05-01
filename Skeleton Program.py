@@ -90,8 +90,7 @@ def GetMenuChoice():
   Valid = False
   while not Valid:
     Choice = input().lower()
-    Choice = Choice[0]
-    if Choice in ['1','2','3','4','5','6','7','q']:
+    if Choice in ['1','2','3','4','5','6','7','q','quit']:
       Valid = True
     else:
       print("Please enter a valid option.")
@@ -368,6 +367,10 @@ if __name__ == '__main__':
       except FileNotFoundError:
         SaveScores(RecentScores)
         print("File not found.")
+    elif Choice == 'quit' or Choice == 'q':
+      print()
+      print("Program shuting down...")
+      break
       
 
 
