@@ -279,10 +279,14 @@ def UpdateRecentScores(RecentScores, Score):
 def SaveScores(RecentScores):
   with open("save_scores.txt.", mode="wb") as my_file:
     pickle.dump(RecentScores, my_file)
+    print()
+    print("Save completed.")
 
 def LoadScores():
   with open("save_scores.txt.", mode="rb") as my_file:
-      RecentScores = pickle.load(my_file)      
+      RecentScores = pickle.load(my_file)
+      print()
+      print("Load completed!")
   return RecentScores
 
 def PlayGame(Deck, RecentScores):
@@ -371,6 +375,3 @@ if __name__ == '__main__':
       print()
       print("Program shuting down...")
       break
-      
-
-
