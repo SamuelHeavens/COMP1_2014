@@ -11,14 +11,14 @@
 1.	ValidName : Boolean
 	ValidName <- False
 	WHILE NOT ValidName DO
-	PlayerName : String
-	PlayerName <- GetPlayerName
-		IF NOT (len(PlayerName) > 0 THEN
-			OUTPUT  “You must enter something for your name!”
-			END IF
-		ELSE:
-			ValidName <- True
-			END WHILE
+		PlayerName : String
+		PlayerName <- GetPlayerName
+			IF NOT (len(PlayerName) > 0 THEN
+				OUTPUT  “You must enter something for your name!”
+				END IF
+			ELSE:
+				ValidName <- True
+				END WHILE
 
 ##Task 5 - Adding a date to the recent scores
 
@@ -30,25 +30,25 @@
 
 ##Additional Task - Variable roles
 
-Fixed Value - A variable obtained with out any calculation and doesn't change.
-Stepper - A variable used to keep a count of the number of repetitions.
-Most recent holder - A variable used to store the latest of a series of values.
-Most wanted holder - Stores the most appropriate value encountered. e.g. storing the largest value calculated so far.
-Gatherer - Keeps a total of a series of values.
-Transformation - A variable that gets it's new value from the calculation from another calculation of variables. e.g. conversions.
-Follower - Keeps track of a previous value of a variable.
-Temporary - A variable used for holding a value for a short time. This could be used when swapping values of variables.
+1. Fixed Value - A variable obtained with out any calculation and doesn't change.
+2. Stepper - A variable used to keep a count of the number of repetitions.
+3. Most recent holder - A variable used to store the latest of a series of values.
+4. Most wanted holder - Stores the most appropriate value encountered. e.g. storing the largest value calculated so far.
+5. Gatherer - Keeps a total of a series of values.
+6. Transformation - A variable that gets it's new value from the calculation from another calculation of variables. e.g. conversions.
+7. Follower - Keeps track of a previous value of a variable.
+8. Temporary - A variable used for holding a value for a short time. This could be used when swapping values of variables.
 
 Examples of each:
 
-Fixed Value: NoOfSwaps line 98
-Stepper: Count line 94
-Most recent holder:  Choice 197
-Most wanted holder: LineFromFile line 87, LastCard line 187
-Gatherer: - (None in program) 
-Transformation: Higher line 124, FoundSpace 171
-Follower: LastCard line 187
-Temporary: Swap space line 97
+1. Fixed Value: NoOfSwaps line 98
+2. Stepper: Count line 94
+3. Most recent holder:  Choice 197
+4. Most wanted holder: LineFromFile line 87, LastCard line 187
+5. Gatherer: - (None in program) 
+6. Transformation: Higher line 124, FoundSpace 171
+7. Follower: LastCard line 187
+8. Temporary: Swap space line 97
 
 ##Additional Task - Functions And Parameters
 
@@ -59,17 +59,17 @@ Temporary: Swap space line 97
 
 2. For each function in the program identify the mechanism using to pass each parameter:
 
-   GetRank Function - RankNo is passed via value
-   GetSuit Function - SuitNo is passed via value
-   DisplayEndOfgameMessage - Score is passed via value
-   LoadDeck Function - Deck is passed by reference
-   ShuffleDeck Function - Deck is passed by reference
-   DisplayCard Function - ThisCard is passed by reference - record
-   GetCard Function - ThisCard, Deck and NoOfCardsTurnedOver are all passed by reference 
-   IsNextCardHigher Function - LastCard and NextCard both passed by value
-   DisplayEndOfGameMessage Function - Score is passed by reference
-   DisplayCorrectGuessMessage Function - Score is passed by reference
-   ResetRecentScores Function - RecentScores is passed by reference
-   DisplayRecentScores Function - RecentScores is passed by reference
-   UpdateRecentScores Function - RecentScores and Score are both passed by reference
-   PlayGame Function - Deck and RecentScores are bother passed by reference
+	GetRank Function - RankNo is passed via value
+	GetSuit Function - SuitNo is passed via value
+	DisplayEndOfgameMessage - Score is passed via value
+	LoadDeck Function - Deck is passed by reference
+	ShuffleDeck Function - Deck is passed by reference
+	DisplayCard Function - ThisCard is passed by reference - record
+	GetCard Function - ThisCard, Deck and NoOfCardsTurnedOver are all passed by reference 
+	IsNextCardHigher Function - LastCard and NextCard both passed by value
+	DisplayEndOfGameMessage Function - Score is passed by reference
+	DisplayCorrectGuessMessage Function - Score is passed by reference
+	ResetRecentScores Function - RecentScores is passed by reference
+	DisplayRecentScores Function - RecentScores is passed by reference
+	UpdateRecentScores Function - RecentScores and Score are both passed by reference
+	PlayGame Function - Deck and RecentScores are bother passed by reference
