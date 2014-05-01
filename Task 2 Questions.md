@@ -62,9 +62,9 @@
 
 |TestNumber|Test Description|Test Data|Type|Expected Result|Actual Result|
 |----------|----------------|---------|----|---------------|-------------|
-|1| |quit|Normal|The user enters 'quit' or 'q' to end the game.|Does what is expected.
-|2| |8|Boundary|Input rejected and a choice to re-enter appears.| Does what is expected.
-|3| |#|Erroneous|Input is again rejected and offers a change for the user to try again.|Does what is expected.
+|1)|A test to see what effect a piece of normal test data will have.|quit|Normal|The user enters 'quit' or 'q' to end the game.|Does what is expected.
+|2)|A test to see what effect a piece of boundary test data will have.|8|Boundary|Input rejected and a choice to re-enter appears.| Does what is expected.
+|3)|A test to see what effect a piece of erroneous test data will have.|#|Erroneous|Input is again rejected and offers a change for the user to try again.|Does what is expected.
 ##Task 7 - Pseudo-code
 
 	FUNCTION BubbleSortScores(RecentScores:String)
