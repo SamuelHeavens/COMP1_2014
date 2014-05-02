@@ -277,16 +277,25 @@ def UpdateRecentScores(RecentScores, Score):
       ValidResponse = True
 
 def SaveScores(RecentScores):
-  with open("save_scores.txt.", mode="wb") as my_file:
-    pickle.dump(RecentScores, my_file)
+  with open("save_scores.txt", mode="w", encoding="utf-8") as my_file:
+    for count in range (1,len(RecentScores)):
+      my_file.write("{0}\n".format(RecentScores[count].Name))
+      my_file.write("{0}\n".format(RecentScores[count].Score))
+      my_file.write("{0}\n".format(RecentScores[count].Date))
     print()
     print("Save completed.")
 
 def LoadScores():
-  with open("save_scores.txt.", mode="rb") as my_file:
-      RecentScores = pickle.load(my_file)
-      print()
-      print("Load completed!")
+  RecentScores = [""]
+  with open("save_scores.txt", mode="r", encoding = "utf-8") as Scores:
+    for count in range(1,NO_OF_RECENT_SCORES + 1):
+      ScoreRecord = TRecentScore()
+      ScoreRecord.Name = Scores.readline().rstrip("\n")
+      ScoreRecord.Date = Scores.readline().rstrip("\n")
+      ScoreRecord.Score = Scores.readline().rstrip("\n")
+      RecentScores.append(ScoreRecord)
+    print()
+    print("Load completed!")
   return RecentScores
 
 def PlayGame(Deck, RecentScores):
@@ -368,7 +377,7 @@ if __name__ == '__main__':
     elif Choice == '7':
       try:
         RecentScores = LoadScores()
-      except FileNotFoundError:
+      except IOError:
         SaveScores(RecentScores)
         print("File not found.")
     elif Choice == 'quit' or Choice == 'q':
